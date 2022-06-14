@@ -2,7 +2,6 @@
   "name": "react-bootstrap",
   "version": "2.5.0-SNAPSHOT",
   "description": "Bootstrap 5 components built with React",
-  "keywords": [],
   "homepage": "https://react-bootstrap.github.io/",
   "bugs": {
     "url": "https://github.com/react-bootstrap/react-bootstrap/issues"
