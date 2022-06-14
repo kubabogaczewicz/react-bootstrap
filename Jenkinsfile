@@ -1,5 +1,7 @@
 library 'smartlogic-common@v2'
 
+this.utils = smartlogic.api('Utils')
+
 smartlogic([
   docker: 'node:16',
   builder: smartlogic.yarnBuilder(),
