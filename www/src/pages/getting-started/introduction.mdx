@@ -5,6 +5,7 @@ import CssCodeBlock from '../../components/CssCodeBlock';
 import DocLink from '../../components/DocLink';
 import ReactPlayground from '../../components/ReactPlayground';
 import AsPropButtonExample from '../../examples/AsProp';
+import AsPropComponent from '../../examples/AsPropComponent';
 
 <PageHeader
   title="Introduction"
@@ -42,7 +43,7 @@ import { Button } from 'react-bootstrap';
 We provide `react-bootstrap.js` and
 `react-bootstrap.min.js` bundles with all components
 exported on the `window.ReactBootstrap` object. These
-bundles are available on [unpkg](https://unpkg.com/react-bootstrap/), as
+bundles are available on [jsDelivr](https://www.jsdelivr.com/package/npm/react-bootstrap), as
 well as in the npm package.
 
 <BrowserGlobalsCodeBlock />
@@ -62,7 +63,7 @@ stylesheet **is required** to use these components.
 ### CSS
 
 ```
-{/* The following line can be included in your src/index.js or App.js file*/}
+{/* The following line can be included in your src/index.js or App.js file */}
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 ```
@@ -122,20 +123,26 @@ $theme-colors: (
 See [the Bootstrap docs](https://getbootstrap.com/docs/4.4/getting-started/theming/)
 for more advanced use cases and details about customizing stylesheets.
 
-## "as" Prop API
+## `as` Prop API
 
 With certain React-Bootstrap components, you may want to modify the component or HTML tag
 that is rendered.
 
 If you want to keep all the styling of a particular React-Bootstrap component but switch the
 component that is finally rendered (whether it's a different React-Bootstrap component, a
-different custom component, or a different HTML tag) you can use the "as" Prop to do so.
+different custom component, or a different HTML tag) you can use the `as` prop to do so.
 
-The example below passes a Column component to the "as" Prop in a Button component. This
-ultimately causes a Column component to be rendered but with the same styles as a Button
+The example below passes an anchor to the `as` prop in a `Button` component. This
+ultimately causes a `a` tag to be rendered but with the same styles as a `Button`
 component.
 
 <ReactPlayground codeText={AsPropButtonExample} />
+
+Below is an illustration of passing a React Bootstrap component. It contains a `Badge` component and a `Button` 
+component that have been supplied to the `as` prop. This finally results in the rendering of a `Button` component 
+with the same styles as a `Badge` component.
+
+<ReactPlayground codeText={AsPropComponent} />
 
 ## Themes
 

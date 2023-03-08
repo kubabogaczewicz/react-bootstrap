@@ -22,7 +22,7 @@ const NavbarText = createWithBsPrefix('navbar-text', {
 export interface NavbarProps
   extends BsPrefixProps,
     Omit<React.HTMLAttributes<HTMLElement>, 'onSelect'> {
-  variant?: 'light' | 'dark';
+  variant?: 'light' | 'dark' | string;
   expand?: boolean | string | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
   bg?: string;
   fixed?: 'top' | 'bottom';
@@ -122,7 +122,7 @@ const propTypes = {
   collapseOnSelect: PropTypes.bool,
 
   /**
-   * Controls the visiblity of the navbar body
+   * Controls the visibility of the navbar body
    *
    * @controllable onToggle
    */

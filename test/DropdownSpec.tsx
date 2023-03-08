@@ -40,6 +40,31 @@ describe('<Dropdown>', () => {
     });
   });
 
+  it('renders div with drop=down-centered', () => {
+    const { container } = render(
+      <Dropdown title="Drop" drop="down-centered">
+        {dropdownChildren}
+      </Dropdown>,
+    );
+
+    container.firstElementChild!.classList.should.not.contain(['dropdown']);
+    container.firstElementChild!.classList.should.contain([`dropdown-center`]);
+  });
+
+  it('renders div with drop=up-centered', () => {
+    const { container } = render(
+      <Dropdown title="Drop" drop="up-centered">
+        {dropdownChildren}
+      </Dropdown>,
+    );
+
+    container.firstElementChild!.classList.should.not.contain(['dropdown']);
+    container.firstElementChild!.classList.should.contain([
+      'dropup-center',
+      'dropup',
+    ]);
+  });
+
   it('renders toggle with Dropdown.Toggle', () => {
     const { getByText } = render(simpleDropdown);
 
@@ -204,6 +229,13 @@ describe('<Dropdown>', () => {
       onToggleSpy.getCall(0).args.length.should.equal(2);
       onToggleSpy.getCall(0).args[0].should.equal(true);
       onToggleSpy.getCall(0).args[1].source.should.equal('keydown');
+    });
+
+    it('Should render .show on the dropdown toggle when outside an InputGroup', () => {
+      const { getByText } = render(
+        <Dropdown show>{dropdownChildren}</Dropdown>,
+      );
+      getByText('Child Title').classList.contains('show').should.be.true;
     });
   });
 

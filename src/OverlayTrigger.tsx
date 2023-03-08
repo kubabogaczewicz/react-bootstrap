@@ -74,6 +74,8 @@ const propTypes = {
   /**
    * Specify which action or actions trigger Overlay visibility
    *
+   * The `click` trigger ignores the configured `delay`.
+   *
    * @type {'hover' | 'click' |'focus' | Array<'hover' | 'click' |'focus'>}
    */
   trigger: PropTypes.oneOfType([triggerType, PropTypes.arrayOf(triggerType)]),
@@ -199,7 +201,7 @@ function OverlayTrigger({
       ? React.Children.only(children).props
       : ({} as any);
 
-  const attachRef = (r: React.ComponentClass | Element | null | undefined) => {
+  const attachRef = (r: React.Component | Element | null | undefined) => {
     mergedRef(safeFindDOMNode(r));
   };
 

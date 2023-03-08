@@ -26,7 +26,7 @@ import styles from '../../css/examples.module.scss';
 
 ## Overview
 
-Things to know about the React-Boostrap Overlay components.
+Things to know about the React-Bootstrap Overlay components.
 
 - Overlays rely on the third-party library [Popper.js](https://popper.js.org).
   It's included automatically with React-Bootstrap, but you should reference the API
@@ -53,6 +53,16 @@ check out the [Popper](https://popper.js.org/docs/v2)
 documentation for more details about the injected props.
 
 <ReactPlayground codeText={Overlay} />
+
+### Customizing Overlay rendering
+
+The `Overlay` injects a number of props that you can use to customize the
+rendering behavior. There is a case where you would need to show the overlay
+before `Popper` can measure and position it properly. In React-Bootstrap,
+tooltips and popovers sets the opacity and position to avoid issues where
+the initial positioning of the overlay is incorrect. See the
+[Tooltip](https://github.com/react-bootstrap/react-bootstrap/blob/master/src/Tooltip.tsx)
+implementation for an example on how this is done.
 
 ## OverlayTrigger
 

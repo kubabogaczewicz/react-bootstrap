@@ -341,7 +341,7 @@ const Modal: BsPrefixRefForwardingComponent<'div', ModalProps> =
       });
 
       // We prevent the modal from closing during a drag by detecting where the
-      // the click originates from. If it starts in the modal and then ends outside
+      // click originates from. If it starts in the modal and then ends outside
       // don't close.
       const handleDialogMouseDown = () => {
         waitingForMouseUpRef.current = true;
@@ -391,13 +391,16 @@ const Modal: BsPrefixRefForwardingComponent<'div', ModalProps> =
       };
 
       const handleEscapeKeyDown = (e) => {
-        if (!keyboard && backdrop === 'static') {
-          // Call preventDefault to stop modal from closing in restart ui,
-          // then play our animation.
+        if (keyboard) {
+          onEscapeKeyDown?.(e);
+        } else {
+          // Call preventDefault to stop modal from closing in @restart/ui.
           e.preventDefault();
-          handleStaticModalAnimation();
-        } else if (keyboard && onEscapeKeyDown) {
-          onEscapeKeyDown(e);
+
+          if (backdrop === 'static') {
+            // Play static modal animation.
+            handleStaticModalAnimation();
+          }
         }
       };
 
@@ -458,6 +461,7 @@ const Modal: BsPrefixRefForwardingComponent<'div', ModalProps> =
             className,
             bsPrefix,
             animateStaticModal && `${bsPrefix}-static`,
+            !animation && 'show',
           )}
           onClick={backdrop ? handleClick : undefined}
           onMouseUp={handleMouseUp}

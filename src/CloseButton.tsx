@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import * as React from 'react';
 import classNames from 'classnames';
 
-export type CloseButtonVariant = 'white';
+export type CloseButtonVariant = 'white' | string;
 
 export interface CloseButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -10,7 +10,10 @@ export interface CloseButtonProps
 }
 
 const propTypes = {
+  /** An accessible label indicating the relevant information about the Close Button. */
   'aria-label': PropTypes.string,
+
+  /** A callback fired after the Close Button is clicked. */
   onClick: PropTypes.func,
 
   /**
